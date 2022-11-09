@@ -60,8 +60,8 @@ for (let i = 0; i < images.length; i++){
     carousel.querySelector(`.thumb-${i} img`).src = game.image;
 
     //testo
-    carousel.querySelector('h2').innerHtml = game.title;
-    carousel.querySelector('p').innerHtml = game.text;
+    carousel.querySelector('.game-text h2').innerHtml = game.title;
+    carousel.querySelector('.game-text p').innerHtml = game.text;
 }
 
 let active= 0;
