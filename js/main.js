@@ -42,3 +42,48 @@ const images = [
         text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
     }
 ];
+
+const carouselContainer = document.querySelector('.container');
+const carousel = document.getElementById("template").content.cloneNode(true);
+
+
+let mainImage = carousel.querySelectorAll('.d-none');
+let thumbnail = carousel.querySelectorAll('.thumbnail');
+
+
+for (let i = 0; i < images.length; i++){
+    console.log(carousel.querySelector('.title').innerHtml)
+    //immagini principali
+    carousel.querySelector(`.main-${i} img`).src = images[i].image;
+
+    //thumbnails    
+    carousel.querySelector(`.thumb-${i} img`).src = images[i].image;
+
+    //testo
+    carousel.querySelector('h2').innerHtml = images[i].title;
+    carousel.querySelector('p').innerHtml = images[i].text;
+}
+
+let active= 0;
+
+carousel.querySelector('.btn-prev').addEventListener('click', function() {
+    mainImage[active].classList.remove('active');
+    if( active === 0 ) {
+        active = images.length -1;
+    } else {
+        active--;
+    }
+    mainImage[active].classList.add('active');
+});
+
+carousel.querySelector('.btn-next').addEventListener('click', function() {
+    mainImage[active].classList.remove('active');
+    if ( active === images.length - 1) {
+        active = 0;
+    } else {
+        active++;
+    }
+    mainImage[active].classList.add('active'); 
+});
+
+carouselContainer.append(carousel);
