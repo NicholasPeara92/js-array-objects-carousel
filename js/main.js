@@ -49,19 +49,22 @@ const carousel = document.getElementById("template").content.cloneNode(true);
 // variabili delle immagini
 let mainImage = carousel.querySelectorAll('.d-none');
 let thumbnail = carousel.querySelectorAll('.thumbnail');
+const imgTitle = document.querySelector(".title");
+const description = document.querySelector(".description");
+
 
 // ciclo for per inserire gli elementi degli oggetti presenti sull'array 
 for (let i = 0; i < images.length; i++){
     let game = images[i];
     //immagini principali
     carousel.querySelector(`.main-${i} img`).src = game.image;
-
+    
     //thumbnails    
     carousel.querySelector(`.thumb-${i} img`).src = game.image;
+    // //testo
+    // imgTitle.innerHtml = game.title;
+    // description.innerHtml = game.text;
 
-    //testo
-    carousel.querySelector('.game-text h2').innerHtml = game.title;
-    carousel.querySelector('.game-text p').innerHtml = game.text;
 }
 
 let active= 0;
@@ -76,14 +79,29 @@ carousel.querySelector('.btn-prev').addEventListener('click', function() {
     mainImage[active].classList.add('active');
 });
 // evento click tasto inferiore
-carousel.querySelector('.btn-next').addEventListener('click', function() {
+carousel.querySelector('.btn-next').addEventListener('click', nextSlide );
+
+carouselContainer.append(carousel);
+
+
+function nextSlide() {
     mainImage[active].classList.remove('active');
     if ( active === images.length - 1) {
         active = 0;
     } else {
         active++;
     }
-    mainImage[active].classList.add('active'); 
-});
+    mainImage[active].classList.add('active');
+}
 
-carouselContainer.append(carousel);
+// inserisco autoplay
+let autoplay = setInterval(nextSlide, 5000);
+// blocco l'autoplay
+carousel.addEventListener('mouseenter', function() {
+    console.log('mouseenter');
+    clearInterval(autoplay);
+});
+// riavvia l'autoplay
+carousel.addEventListener('mouseleave', function() {
+    autoplay = setInterval(nextSlide, 5000);
+});
