@@ -3,3 +3,94 @@
     margin: 0;
     padding: 0;
 }
+
+
+
+.container {
+    margin: auto;
+    padding-top: 150px;
+    max-width: 900px;
+}
+
+.carousel {
+    display: flex;
+    height: 400px;
+}
+
+.main-image {
+    width: 76%;
+    height: 100%;
+    position: relative;
+}
+
+.big-image {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    object-fit: cover;
+}
+
+.game-text {
+    padding: 2px;
+    width: 100%;
+    z-index: 1;
+    height: 30%;
+    position: absolute;
+    bottom: 2%;
+    right: 2%;
+    color: white;
+    text-align: end;
+}
+
+.thumbnails {
+    width: 24%;
+    height: 100%;
+    position: relative;
+}
+
+.small-image {
+    width: 100%;
+    height: calc(100%/5);
+    opacity: 0.8;
+}
+
+.small {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+
+.btn-prev {
+    background-color: white;
+    border-radius: 50%;
+    display: inline-block;
+    padding: 10px;
+    cursor: pointer;
+    position: absolute;
+    z-index: 100;
+    left: 50%;
+    transform: translate(-50%);
+    top: 2%;
+}
+
+.btn-next {
+    background-color: white;
+    border-radius: 50%;
+    display: inline-block;
+    padding: 10px;
+    cursor: pointer;
+    position: absolute;
+    z-index: 100;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 2%;
+}
+
+
+.active {
+    display: block;
+}
+
+
+

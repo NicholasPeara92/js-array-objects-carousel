@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Carousel</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="container">
+        
+    </div>
+    <template id="template">
         <div class="carousel">
             <div class="main-image">
-                <img src="img/01.webp" alt="">
+                <img class="big-image" src="img/01.webp" alt="">
                 <div class="game-text">
                     <h2 class="title">Marvel's Spiderman Miles Morales</h2>
                     <p class="description">Experience the rise of Miles Morales as the new hero masters incredible, explosive new powers to become his own Spider-Man.</p>
@@ -33,14 +37,15 @@
                 <div class="small-image">
                     <img class="small" src="img/05.webp" alt="">
                 </div>
-            </div>
-            <div class="buttons">
-                <div class="top"><i class="fa-solid fa-caret-up"></i></div>
-                <div class="bottom"><i class="fa-solid fa-caret-down"></i></div>
+                <div class="btn-prev">
+                    <i class="fa-solid fa-chevron-up"></i>
+                </div>
+                <div class="btn-next">
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
             </div>
         </div>
-    </div>
-    
+    </template>
     <script src="js/main.js"></script>
 </body>
 </html>
