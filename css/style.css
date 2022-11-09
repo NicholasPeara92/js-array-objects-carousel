@@ -38,7 +38,7 @@ body {
     position: absolute;
     bottom: 10px;
     right: 10px;
-    z-index: 101;
+    z-index: 10;
     color: white;
     text-align: end;
 }

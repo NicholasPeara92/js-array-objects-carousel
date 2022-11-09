@@ -22,7 +22,7 @@
 const images = [
     {
         image: 'img/01.webp',
-        title: 'Marvel\'s Spiderman Miles Morale',
+        title: 'Marvel\'s Spiderman Miles Morales',
         text: 'Experience the rise of Miles Morales as the new hero masters incredible, explosive new powers to become his own Spider-Man.',
     }, {
         image: 'img/02.webp',
@@ -52,16 +52,16 @@ let thumbnail = carousel.querySelectorAll('.thumbnail');
 
 
 for (let i = 0; i < images.length; i++){
-    console.log(carousel.querySelector('.title').innerHtml)
+    let game = images[i];
     //immagini principali
-    carousel.querySelector(`.main-${i} img`).src = images[i].image;
+    carousel.querySelector(`.main-${i} img`).src = game.image;
 
     //thumbnails    
-    carousel.querySelector(`.thumb-${i} img`).src = images[i].image;
+    carousel.querySelector(`.thumb-${i} img`).src = game.image;
 
     //testo
-    carousel.querySelector('h2').innerHtml = images[i].title;
-    carousel.querySelector('p').innerHtml = images[i].text;
+    carousel.querySelector('h2').innerHtml = game.title;
+    carousel.querySelector('p').innerHtml = game.text;
 }
 
 let active= 0;
