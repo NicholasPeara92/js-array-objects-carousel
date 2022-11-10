@@ -6,97 +6,95 @@
 
 body {
     background-color: black;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .container {
-    margin-left: 500px;
+    width: 100%;
+    max-width: 1000px;
+    height: 400px;
+    margin: auto;
+    display: flex;
     
 }
 
-.carousel {
-    display: flex;
-    height: 500px;
-    padding-top: 150px;
-    max-width: 900px;
-}
-
-
 .main-image {
-    width: 76%;
-    height: 100%;
+    width: 75%;
     position: relative;
 }
 
-.main-image img {
+.main-image img, .thumb img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
 .game-text {
-    position: absolute;
-    bottom: 2%;
-    z-index: 100;
     color: white;
-    text-align: end;
-    display: inline-block;
-    right: 2%;
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
     height: 100px;
-    
 }
 
 .thumbnails {
-    width: 24%;
-    height: 100%;
     position: relative;
+    width: 25%;
 }
 
-.small-image {
-    width: 100%;
-    height: calc(100%/5);
-    opacity: 0.8;
+.thumb {
+    height: 20%;
 }
 
-.small {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
+.thumb.active {
+    border: 3px solid #ddd;
+    transform: scaleX(1.1);
+    transition: 1s;
 }
 
+.thumb:not(.active) {
+    filter: grayscale(1);
+}
 
 .btn-prev {
     background-color: white;
     border-radius: 50%;
+    height: 30px;
+    width: 30px;
     display: inline-block;
-    padding: 10px;
     cursor: pointer;
     position: absolute;
-    z-index: 100;
+    z-index: 10;
     left: 50%;
     transform: translate(-50%);
     top: 2%;
+    text-align: center;
+    line-height: 30px;
+
 }
 
 .btn-next {
     background-color: white;
     border-radius: 50%;
     display: inline-block;
-    padding: 10px;
+    height: 30px;
+    width: 30px;
     cursor: pointer;
     position: absolute;
-    z-index: 100;
+    z-index: 10;
     left: 50%;
     transform: translate(-50%);
     bottom: 2%;
+    text-align: center;
+    line-height: 30px;
 }
 
-.d-none {
-    display: none;
-}
-
-.active {
-    display: block;
-}
 
 
 

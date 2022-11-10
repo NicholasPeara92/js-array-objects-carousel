@@ -10,71 +10,28 @@
 </head>
 <body>
     <div class="container">
-        
+        <!-- immagini principali con descrizione e titolo -->
+        <div class="main-image">
+            <img class="" src="" alt="">
+            <div class="game-text">
+                <h2 class="title"></h2>
+                <p class="description"></p>
+            </div>
+        </div>
+        <div class="thumbnails">
+            <!-- bottoni -->
+            <div class="btn-prev">
+                <i class="fa-solid fa-chevron-up"></i>
+            </div>
+            <div class="btn-next">
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+        </div>
     </div>
-    <template id="template">
-        <div class="carousel">
-            <!-- immagini principali con descrizione e titolo -->
-            <div class="main-image main-0 d-none active">
-                <img class="" src="" alt="">
-                <div class="game-text">
-                    <h2 class="title"></h2>
-                    <p class="description"></p>
-                </div>
-            </div>
-            <div class="main-image main-1 d-none">
-                <img class="" src="" alt="">
-                <div class="game-text">
-                    <h2 class="title"></h2>
-                    <p class="description"></p>
-                </div>
-            </div>
-            <div class="main-image main-2 d-none">
-                <img class="" src="" alt="">
-                <div class="game-text">
-                    <h2 class="title"></h2>
-                    <p class="description"></p>
-                </div>
-            </div>
-            <div class="main-image main-3 d-none">
-                <img class="" src="" alt="">
-                <div class="game-text">
-                    <h2 class="title"></h2>
-                    <p class="description"></p>
-                </div>
-            </div>
-            <div class="main-image main-4 d-none">
-                <img class="" src="" alt="">
-                <div class="game-text">
-                    <h2 class="title"></h2>
-                    <p class="description"></p>
-                </div>
-            </div>
-            <!-- thumbnails -->
-            <div class="thumbnails">
-                <div class="small-image thumb-0">
-                    <img class="small" src="" alt="">
-                </div>
-                <div class="small-image thumb-1">
-                    <img class="small" src="" alt="">
-                </div>
-                <div class="small-image thumb-2">
-                    <img class="small" src="" alt="">
-                </div>
-                <div class="small-image thumb-3">
-                    <img class="small" src="" alt="">
-                </div>
-                <div class="small-image thumb-4">
-                    <img class="small" src="" alt="">
-                </div>
-                <!-- bottoni -->
-                <div class="btn-prev">
-                    <i class="fa-solid fa-chevron-up"></i>
-                </div>
-                <div class="btn-next">
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-            </div>
+    <!-- template thumbnails carousel -->
+    <template id="thumb">
+        <div class="thumb">
+            <img src="" alt="">
         </div>
     </template>
     <script src="js/main.js"></script>

@@ -38,70 +38,77 @@ const images = [
         text: 'Lost, injured and alone, a stray cat must untangle an ancient mystery to escape a long-forgotten city',
     }, {
         image: 'img/05.webp',
-        title: "Marvel's Avengers",
+        title: 'Marvel\'s Avengers',
         text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
     }
 ];
-// variabili del container e del carosello
-const carouselContainer = document.querySelector('.container');
-const carousel = document.getElementById("template").content.cloneNode(true);
 
-// variabili delle immagini
-let mainImage = carousel.querySelectorAll('.d-none');
-let thumbnail = carousel.querySelectorAll('.thumbnail');
-const imgTitle = document.querySelector(".title");
-const description = document.querySelector(".description");
-
-
-// ciclo for per inserire gli elementi degli oggetti presenti sull'array 
-for (let i = 0; i < images.length; i++){
-    let game = images[i];
-    //immagini principali
-    carousel.querySelector(`.main-${i} img`).src = game.image;
-    
-    //thumbnails    
-    carousel.querySelector(`.thumb-${i} img`).src = game.image;
-    // //testo
-    // imgTitle.innerHtml = game.title;
-    // description.innerHtml = game.text;
-
+// FUNZIONI
+function setCurrentImage() {
+    currentImageContainer.querySelector('img').src = images[active].image;
+    currentImageContainer.querySelector('img').alt = images[active].title;
+    currentImageContainer.querySelector('.game-text h2').innerHTML = images[active].title;
+    currentImageContainer.querySelector('.game-text p').innerHTML = images[active].text;
+}
+function changeSlide(direction) {
+    // Rimuovo la classe active dalla thumb attiva
+    thumbs[active].classList.remove('active');
+    if( direction === 'next' ) {
+        if( active < images.length - 1 ) {
+            active++;
+        } else {
+            active = 0;
+        }
+    } else if( direction === 'prev' ) {
+        if( active > 0 ) {
+            active--;
+        } else {
+            active = images.length - 1;
+        }
+    }
+    // aggiungo la classe active alla thumb successiva
+    thumbs[active].classList.add('active');
+    // modifico l'immagine e il testo del main image
+    setCurrentImage();
 }
 
+// VARIABILI
 let active= 0;
-// evento click tasto superiore
-carousel.querySelector('.btn-prev').addEventListener('click', function() {
-    mainImage[active].classList.remove('active');
-    if( active === 0 ) {
-        active = images.length -1;
-    } else {
-        active--;
+const currentImageContainer = document.querySelector('.main-image');
+const thumbnail = document.querySelector('.thumbnails');
+
+
+// MAIN
+setCurrentImage();
+
+// Creo le Thumbnails
+images.forEach((element, index) => {
+    // Clono il template delle thumb
+    const templateThumb = document.getElementById('thumb').content.cloneNode(true);
+    // Compilo l'html del template appena clonato
+    if( index === active ) {
+        templateThumb.querySelector('.thumb').classList.add('active');
     }
-    mainImage[active].classList.add('active');
+    templateThumb.querySelector('img').src = element.image;
+    templateThumb.querySelector('img').alt = element.title;
+    thumbnail.append(templateThumb);
 });
-// evento click tasto inferiore
-carousel.querySelector('.btn-next').addEventListener('click', nextSlide );
 
-carouselContainer.append(carousel);
-
-
-function nextSlide() {
-    mainImage[active].classList.remove('active');
-    if ( active === images.length - 1) {
-        active = 0;
-    } else {
-        active++;
-    }
-    mainImage[active].classList.add('active');
-}
+// Seleziono tutte le thumbnails
+const thumbs = document.querySelectorAll('.thumb');
+// Aggiungo evento click al bottone inferiore
+const btnNextSlide = document.querySelector('.btn-next');
+btnNextSlide.addEventListener('click', function() {
+    changeSlide('next');
+});
+// Aggiungo evento click al bottone superiore
+const btnPrevSlide = document.querySelector('.btn-prev');
+btnPrevSlide.addEventListener('click', function() {
+    changeSlide('prev');
+});
 
 // inserisco autoplay
-let autoplay = setInterval(nextSlide, 5000);
-// blocco l'autoplay
-carousel.addEventListener('mouseenter', function() {
-    console.log('mouseenter');
-    clearInterval(autoplay);
-});
-// riavvia l'autoplay
-carousel.addEventListener('mouseleave', function() {
-    autoplay = setInterval(nextSlide, 5000);
-});
+let autoplay = setInterval(function() {
+        changeSlide('next');
+}, 4000);
+
